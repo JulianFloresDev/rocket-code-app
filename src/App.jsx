@@ -1,7 +1,12 @@
+import styles from './App.module.css';
+import Form from './components/Form';
+
 function App() {
   return (
     <>
-      <main></main>
+      <main className={styles.main}>
+        <Form />
+      </main>
     </>
   );
 }

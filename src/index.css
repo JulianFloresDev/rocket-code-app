@@ -1,0 +1,28 @@
+:root {
+  --theme-color-white: #f0f0f0;
+  --theme-color-black: #131313;
+  --theme-color-gray-300: #cecece;
+  --theme-color-gray-500: #afafaf;
+  --theme-color-gray-700: #888888;
+  --theme-color-gray-900: #585858;
+
+  --theme-color-pink-500: #e05e94;
+  --theme-color-red-500: #db4464;
+  --theme-color-red-700: #d14261;
+  
+  --theme-color-blue-700: #4250d1;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+
+  outline: none;
+  border: none;
+}
+
+body {
+
+  width: 100svw;
+}
