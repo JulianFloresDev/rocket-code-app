@@ -11,6 +11,7 @@ function Form() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    setFinish(true);
     const formData = new FormData(e.target);
     const reqBody = {
       nombre: formData.get('nombre'),
@@ -30,7 +31,6 @@ function Form() {
       },
       body: JSON.stringify(reqBody)
     });
-    setFinish(true);
   };
 
   return (
@@ -118,9 +118,9 @@ function Form() {
 
       {finish && (
         <div className={style.final_message}>
-          <p>Fecha de Nacimiento: {answers.fecha_de_nacimiento},</p>
-          <p>Correo Electrónico: {answers.email},</p>
-          <p>Teléfono: {answers.telefono},</p>
+          <p>Fecha de Nacimiento: {answers.fecha_de_nacimiento}</p>
+          <p>Correo Electrónico: {answers.email}</p>
+          <p>Teléfono: {answers.telefono}</p>
           <p>
             Nombre: {answers.nombre} {answers.segundo_nombre} {answers.apellido_paterno}{' '}
             {answers.apellido_materno}
