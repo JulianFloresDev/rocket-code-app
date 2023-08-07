@@ -1,4 +1,5 @@
 import style from './style.module.css';
+import { useState } from 'react';
 import { UseAnswer } from '../../contexts/AnswerContext';
 import { SiReacthookform } from 'react-icons/si';
 import { FiPower } from 'react-icons/fi';
@@ -6,6 +7,7 @@ import { AgentQuestion, Button } from '../index';
 
 function Form() {
   const { currentStep, answers } = UseAnswer();
+  const [finish, setFinish] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -21,15 +23,14 @@ function Form() {
     };
 
     sessionStorage.setItem('userInformation', JSON.stringify(reqBody));
-    const req = await fetch('https://rocket-code-api.vercel.app/api/users', {
+    await fetch('https://rocket-code-api.vercel.app/api/users', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(reqBody)
     });
-    const res = await req.json();
-    console.log(res);
+    setFinish(true);
   };
 
   return (
@@ -114,6 +115,18 @@ function Form() {
       </main>
 
       {currentStep >= 3 && <Button type="submit">Iniciar</Button>}
+
+      {finish && (
+        <div className={style.final_message}>
+          <p>Fecha de Nacimiento: {answers.fecha_de_nacimiento},</p>
+          <p>Correo Electrónico: {answers.email},</p>
+          <p>Teléfono: {answers.telefono},</p>
+          <p>
+            Nombre: {answers.nombre} {answers.segundo_nombre} {answers.apellido_paterno}{' '}
+            {answers.apellido_materno}
+          </p>
+        </div>
+      )}
     </form>
   );
 }
